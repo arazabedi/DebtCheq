@@ -1,3 +1,5 @@
+// This screen handles both login and registration
+
 import { Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState } from "react";
@@ -11,12 +13,13 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { COLORS, SIZES } from "../constants";
 import useUser from "../hook/useUser"; // Notice the curly braces here
+import BottomTabNavigation from "../navigation/BottomTabNavigation";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
-  const { setUserAuthenticated } = useUser(); // Get the setUserAuthenticated function from UserContext
+  const { userAuthenticated, setUserAuthenticated } = useUser(); // Get the setUserAuthenticated function from UserContext
 
-	const [email, setEmail] = useState("bow@hotmail.com");
+  const [email, setEmail] = useState("bow@hotmail.com");
   const [password, setPassword] = useState("123456");
 
   const handleLogin = async () => {
@@ -60,42 +63,46 @@ const LoginScreen = () => {
     }
   };
 
-  const handleRegister = () => {
+  const handlePage = () => {
     // Navigate to the Register screen
-    navigation.navigate("RegistrationScreen");
+    navigation.navigate("Register");
   };
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <View style={styles.form}>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.registerButton}
-          onPress={handleRegister}
-        >
-          <Text style={styles.buttonText}>Register</Text>
-        </TouchableOpacity>
+  if (userAuthenticated) {
+    return <BottomTabNavigation />;
+  } else {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Login</Text>
+        <View style={styles.form}>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.registerButton}
+            onPress={handlePage}
+          >
+            <Text style={styles.buttonText}>Register</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 };
 
 const styles = StyleSheet.create({

@@ -28,6 +28,7 @@ const UserProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    // Call the checkAuthentication function when the app starts
     const fetchAuthenticationStatus = async () => {
       const isAuthenticated = await checkAuthentication();
       setUserAuthenticated(isAuthenticated);

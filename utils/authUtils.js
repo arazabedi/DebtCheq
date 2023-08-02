@@ -12,4 +12,5 @@ const handleLogout = async (setUserAuthenticated) => {
   }
 };
 
+
 export {handleLogout}

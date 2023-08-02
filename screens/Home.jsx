@@ -6,16 +6,29 @@ import { Ionicons, Fontisto } from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
 import { Welcome, SmallCheque, Cheque, ChequeList } from "../components";
 import UseFetch from "../hook/useFetch";
+import { useNavigation } from "@react-navigation/native";
+import { useEffect } from "react";
 
 const Home = () => {
   const { data, isLoading, error } = UseFetch();
+  const navigation = useNavigation();
+
+  const handleCompose = () => {
+    navigation.navigate("Compose");
+  };
+
   return (
     <SafeAreaView>
       <View style={styles.appBarWrapper}>
         <View style={styles.appBar}>
           <Text style={styles.title}>Open Cheques</Text>
           <TouchableOpacity>
-            <Ionicons name="create-outline" size={40} style={styles.compose} />
+            <Ionicons
+              name="create-outline"
+              size={40}
+              style={styles.compose}
+              onPress={handleCompose}
+            />
           </TouchableOpacity>
         </View>
         <View style={styles.netReceivables}>
@@ -25,7 +38,7 @@ const Home = () => {
       </View>
       <ScrollView>
         <View style={{ marginTop: 15 }}>
-					<ChequeList />
+          <ChequeList />
         </View>
         <Welcome />
       </ScrollView>
