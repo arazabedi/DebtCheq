@@ -1,37 +1,31 @@
 import { StyleSheet } from "react-native";
-import {COLORS, SIZES} from "../constants"
+import { COLORS, SIZES } from "../constants";
 
 const styles = StyleSheet.create({
-	textStyle: {
-		fontFamily:"regular",
-		fontSize:30,
-	},
-	appBarWrapper: {
-		marginHorizontal:22,
-		marginTop: SIZES.small,
-	},
-	appBar: {
-		flexDirection:"row",
-		justifyContent:"space-between",
-		alignItems:"center",
-	},
-	cartCount: {
-		position: "absolute",
-		bottom: 16,
-		width: 16,
-		height: 16,
-		borderRadius: 8,
-		alignItems: "center",
-		backgroundColor: "green",
-		justifyContent: "center",
-		zIndex: 999
-		},
-		cartNumber: {
-		fontFamily: "regular",
-		fontWeight: "600",
-		fontSize: 10,
-		color: COLORS. lightWhite
-		}
-})
+  title: {
+    fontFamily: "regular",
+    fontSize: 30,
+  },
+  appBarWrapper: {
+    marginHorizontal: 22,
+    marginTop: SIZES.small,
+  },
+  appBar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  netReceivables: {
+    backgroundColor: "#90ee90",
+    borderRadius: 30,
+    padding: 10,
+    marginTop: 15,
+    alignItems: "center",
+  },
+  netReceivablesText: {
+    fontFamily: "regular",
+    fontSize: 20,
+  },
+});
 
-export default styles
+export default styles;
