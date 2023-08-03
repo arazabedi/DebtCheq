@@ -1,5 +1,4 @@
 // This screen handles both login and registration
-
 import { Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState } from "react";
@@ -14,6 +13,9 @@ import { useNavigation } from "@react-navigation/native";
 import { COLORS, SIZES } from "../constants";
 import useUser from "../hook/useUser"; // Notice the curly braces here
 import BottomTabNavigation from "../navigation/BottomTabNavigation";
+import { SafeAreaView } from "react-native-safe-area-context";
+import DebtCheqLogo from "../assets/images/DebtCheqLogo.jsx";
+
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -72,35 +74,38 @@ const LoginScreen = () => {
     return <BottomTabNavigation />;
   } else {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Login</Text>
-        <View style={styles.form}>
-          <TextInput
-            style={styles.input}
-            placeholder="Email"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-          />
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.registerButton}
-            onPress={handlePage}
-          >
-            <Text style={styles.buttonText}>Register</Text>
-          </TouchableOpacity>
+      <SafeAreaView>
+        <DebtCheqLogo style={{marginTop: -75}}/>
+        <View style={styles.container}>
+          <Text style={styles.title}>Login</Text>
+          <View style={styles.form}>
+            <TextInput
+              style={styles.input}
+              placeholder="Email"
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry
+            />
+            <TouchableOpacity style={styles.button} onPress={handleLogin}>
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.registerButton}
+              onPress={handlePage}
+            >
+              <Text style={styles.buttonText}>Register</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 };
@@ -111,10 +116,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: COLORS.offwhite,
+		marginTop: -150,
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
+		fontFamily: "regular",
     marginBottom: 20,
   },
   form: {
@@ -136,7 +142,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
+		fontFamily: "regular"
   },
   registerButton: {
     backgroundColor: "green",
@@ -144,6 +150,11 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     marginTop: 10,
+  },
+  logo: {
+    width: 300,
+    height: 500,
+    resizeMode: "stretch",
   },
 });
 

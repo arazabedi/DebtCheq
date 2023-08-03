@@ -20,6 +20,7 @@ export default function App() {
     italic: require("./assets/fonts/Louis_George_Cafe_Italic.ttf"),
     boldItalic: require("./assets/fonts/Louis_George_Cafe_Bold_Italic.ttf"),
     lightItalic: require("./assets/fonts/Louis_George_Cafe_Light_Italic.ttf"),
+    BluuNextTitling: require("./assets/fonts/BluuNext-Titling.otf"),
   });
 
   useEffect(() => {
@@ -47,12 +48,12 @@ export default function App() {
                 component={LoginScreen}
                 options={{ headerShown: false }}
               />
-							<Stack.Screen
+              <Stack.Screen
                 name="Register"
                 component={RegistrationScreen}
                 options={{ headerShown: false }}
               />
-							<Stack.Screen name="Compose" component={Compose} />
+              <Stack.Screen name="Compose" component={Compose} />
             </>
           </Stack.Navigator>
         </NavigationContainer>

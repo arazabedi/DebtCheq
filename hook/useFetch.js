@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-//Fetch data from cheque collection
+//Fetch data from cheque collection (should be called useFetchCheques)
 const UseFetch = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsloading] = useState(false);

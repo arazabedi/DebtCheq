@@ -2,16 +2,17 @@ import { TouchableOpacity, Text, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./home.style";
-import { Ionicons, Fontisto } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
-import { Welcome, SmallCheque, Cheque, ChequeList } from "../components";
+import { Welcome, ChequeList } from "../components";
 import UseFetch from "../hook/useFetch";
 import { useNavigation } from "@react-navigation/native";
-import { useEffect } from "react";
+import useAuthentication from "../hook/useAuthentication";
 
 const Home = () => {
-  const { data, isLoading, error } = UseFetch();
   const navigation = useNavigation();
+  const { data, isLoading, error } = UseFetch();
+  const { userId, decodedToken } = useAuthentication();
 
   const handleCompose = () => {
     navigation.navigate("Compose");

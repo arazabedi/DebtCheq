@@ -101,7 +101,7 @@ const RegistrationScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Registration Screen</Text>
+      <Text style={styles.title}>Sign Up</Text>
       <TextInput
         style={styles.input}
         placeholder="First Name"
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
+		fontFamily: "regular",
     marginBottom: 20,
   },
   input: {
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
+		fontFamily: "regular",
   },
   loginLink: {
     marginTop: 20,
